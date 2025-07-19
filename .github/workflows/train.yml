@@ -7,6 +7,7 @@ on:
 jobs:
   train:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -19,12 +20,11 @@ jobs:
     - name: Install dependencies
       run: pip install -r requirements.txt
 
-    - name: Run Training
+    - name: Run Training Script
       run: python src/train.py
 
-    - name: Upload model artifact
-      uses: actions/upload-artifact@v3
+    - name: Upload Trained Model
+      uses: actions/upload-artifact@v4
       with:
         name: model
         path: model_train.pkl
-

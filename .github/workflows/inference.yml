@@ -2,8 +2,6 @@ name: Inference Workflow
 
 on:
   push:
-    branches: [inference]  # triggers only when pushing to inference branch
-  pull_request:
     branches: [inference]
 
 jobs:
@@ -45,7 +43,7 @@ jobs:
         run: python src/train.py
 
       - name: Upload Trained Model
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: model
           path: model_train.pkl
@@ -67,7 +65,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Download Trained Model
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: model
 
