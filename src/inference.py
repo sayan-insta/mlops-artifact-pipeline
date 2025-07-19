@@ -6,7 +6,10 @@ def run_inference():
     digits = load_digits()
     X, y = digits.data, digits.target
     preds = model.predict(X)
-    print("Predictions:", preds[:10])
+    acc = model.score(X, y)
+
+    print("Sample Predictions:", preds[:10])
+    print(f"Model Accuracy: {acc:.4f}")
 
 if __name__ == "__main__":
     run_inference()
